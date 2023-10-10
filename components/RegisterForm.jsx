@@ -22,14 +22,35 @@ const RegisterForm = () => {
         setPassword(e.target.value);
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         if (!name || !email || !password) {
             setHasError('All field are necessary.')
             return
         }
-    }
+
+        try {
+            const res = await fetch('api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name, email, password
+                })
+            });
+
+            if (res.ok) {
+                const form = e.target;
+                form.reset();
+            } else {
+                console.log('User registration failed.')
+            }
+        } catch (error) {
+            console.log('Error during registration: ', error) 
+        }
+    };
 
   return (
     <div className='grid place-items-center h-screen'>
