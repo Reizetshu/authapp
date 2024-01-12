@@ -46,7 +46,7 @@ const LoginForm = () => {
     <div className='grid place-items-center h-screen'>
         <div className='shadow-lg p-4 rounded-lg border-t-4 
             border-green-400'>
-            <h1 className='text=xl font-bold my-4'>Enter the details</h1>
+            <h1 className='text-xl font-bold my-4'>Enter the details</h1>
 
 
             <form onSubmit={submitHandler} className='flex flex-col gap-3'>
